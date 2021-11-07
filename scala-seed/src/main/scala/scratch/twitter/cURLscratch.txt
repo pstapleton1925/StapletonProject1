@@ -1,0 +1,28 @@
+
+
+
+(“animal crossing” OR “animal crossing:” OR “acnh” OR #animalcrossing OR #acnh)
+
+curl --request POST \
+  --url https://api.twitter.com/1.1/tweets/search/30day/sp1.json \
+  --header 'authorization: Bearer AAAAAAAAAAAAAAAAAAAAAANqVQEAAAAAdfYY03Ms3lCFMESXRcqjEd5pFBw%3DUIx69v5lx73tgjEgzMoJNnAugKbmVFemr2QhXFwuOoivxehf48
+' \
+  --header 'content-type: application/json' \
+  --data '{
+                "query":"(“animal crossing” OR “animal crossing:” OR “acnh” OR #animalcrossing OR #acnh)",
+                "maxResults": "100",
+                "fromDate":"202110100001", 
+                "toDate":"202110110000"
+                }'
+
+s"""curl --request POST \
+  --url https://api.twitter.com/1.1/tweets/search/30day/sp1.json \
+  --header 'authorization: Bearer AAAAAAAAAAAAAAAAAAAAAANqVQEAAAAAdfYY03Ms3lCFMESXRcqjEd5pFBw%3DUIx69v5lx73tgjEgzMoJNnAugKbmVFemr2QhXFwuOoivxehf48
+' \
+  --header 'content-type: application/json' \
+  --data '{
+                "query":"(“animal crossing” OR “animal crossing:” OR “acnh” OR #animalcrossing OR #acnh)",
+                "maxResults": "100",
+                "fromDate":"<$inputFromDate>", 
+                "toDate":"<$inputToDate>"
+                }'"""                
