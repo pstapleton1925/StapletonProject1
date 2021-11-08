@@ -1,7 +1,7 @@
 package scratch
 
 import scratch.users._
-import scratch.twitter._
+// import scratch.twitter._
 import com.github.tototoshi.csv._
 
 import scala.io.StdIn._
@@ -15,6 +15,8 @@ object Main extends App {
   
   // twitter test
   //TwitterDataUtils.getTwitterData(readLine("fromDate (YYYYMMddHHmm: "), readLine("toDate (YYYYMMddHHmm): "))
+  //TwitterDataUtils.getTwitterData
+
 
   // test loginMenu
   InterfaceL0.loginMenu
