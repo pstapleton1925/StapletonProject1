@@ -19,3 +19,6 @@ target/
 .history
 .scala_dependencies
 .cache-main
+
+# this application
+userInfo.csv
