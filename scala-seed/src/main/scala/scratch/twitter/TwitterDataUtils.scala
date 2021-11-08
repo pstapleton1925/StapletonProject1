@@ -34,9 +34,16 @@ object TwitterDataUtils {
         twitterInputBase.replaceAll("iFromDate", s"$inputFromDate")
         twitterInputBase.replaceAll("iToDate", s"$inputToDate")
       }
+
+      val os  = new java.io.ByteArrayOutputStream
+      val code = (twitterInput #> os).!
+      os.close()
+      val opt  = if (code == 0) Some(os.toString("UTF-8")) else None
+	
+      println(opt.get + " from the variable")
     
       val outputFilebw = new BufferedWriter(new FileWriter(outputFile))
-      outputFilebw.write(twitterInput.!!)
+      outputFilebw.write(opt.get)
       outputFilebw.close()
 
     }

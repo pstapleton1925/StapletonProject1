@@ -16,8 +16,8 @@ object Main extends App {
   // twitter test
   //TwitterDataUtils.getTwitterData(readLine("fromDate (YYYYMMddHHmm: "), readLine("toDate (YYYYMMddHHmm): "))
 
-  // run loginMenu
-  //InterfaceL0.loginMenu
+  // test loginMenu
+  InterfaceL0.loginMenu
   
   
 

@@ -5,7 +5,9 @@ import scala.io.StdIn._
 
 object InterfaceL0 {
 
-  val welcomeMessage = """Hello! Welcome to the interface.
+  val welcomeMessage = """
+  
+  Hello! Welcome to the interface.
 
       () ()
       (^.^)    
@@ -19,8 +21,7 @@ object InterfaceL0 {
     [2] Log In
     [3] Quit
   """
-  /**
-    * The pushButton method presents a user with menu options
+  /** pushButton presents a user with menu options
     * and reads and returns an Int from the command line
     * a further method is required to make use of the user's chosen option
     * @param optionsMenu
@@ -62,7 +63,7 @@ object InterfaceL0 {
         println("")
         UserLogin.userLoginMain // run loginUser here        
       }
-      case 3 => println(""); println("[3] Quit"); println("") // quit the application here (leave as-is, but add a quit message)
+      case 3 => println(""); println("[3] Quit"); println("") // quit the application (add a quit message)
       case _ => println(" "); println("Invalid option; try again."); loginMenu
     }
   }

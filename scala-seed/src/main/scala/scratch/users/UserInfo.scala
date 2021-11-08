@@ -12,7 +12,8 @@ object UserInfo {
   
   var userInfoFileVar = new File("userInfo.csv")
   val userInfoHeader = List("userid", "username", "password")
-  val adminInfo = List("0000", "admin", "admin") 
+  val adminInfo = List("0000", "admin", "admin")
+  val demoUser = List("0001", "demo", "demo")
 
   /** uifStartup checks for an existing userInfo.csv
     * if none, uifStartup creates it
@@ -31,7 +32,7 @@ object UserInfo {
           try {
             userInfoFileVar.createNewFile()
             val uifWriter = CSVWriter.open(userInfoFileVar)
-            uifWriter.writeAll(List(userInfoHeader, adminInfo))
+            uifWriter.writeAll(List(userInfoHeader, adminInfo, demoUser))
             println("""  new userInfo file created with default admin user
             """)
             uifWriter.close()
