@@ -11,7 +11,7 @@ object UserLogin {
     val reader = CSVReader.open("userInfo.csv")
     val users = reader.all()
     reader.close()
-    println(users.toString()) // comment this out once done testing
+    // println(users.toString()) // comment this out once done testing
 
     val usernameInput = readLine("""
     Please input username or input 0 to return to the login menu

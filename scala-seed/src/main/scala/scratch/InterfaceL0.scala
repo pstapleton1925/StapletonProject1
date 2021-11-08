@@ -56,7 +56,7 @@ object InterfaceL0 {
   def loginMenu: Unit = {
     var loginOption = InterfaceL0.pushButton(InterfaceL0.loginOptions)
     loginOption match {
-      case 1 => println(""); println("[1] Create User"); println("") // run createUser here
+      case 1 => println(""); println("[1] Create User"); println(""); CreateUser.createUser
       case 2 => {
         println("")
         println("[2] Log In")
@@ -67,23 +67,5 @@ object InterfaceL0 {
       case _ => println(" "); println("Invalid option; try again."); loginMenu
     }
   }
-
-
-
-
-  /**
-    * logIn:
-        a method for logging in an existing user
-    * parameters:
-        string username (existing)
-        string password (existing, correct)
-    * checks against stored users
-    */
-
-  /**
-    * Quit:
-      a method to close the application
-    *parameters:
-      none
-    */
+  
 }
