@@ -61,7 +61,25 @@ object UserLogin {
         case _ => println("""
         finding password...
         """)
-        passwordMatching(passwordInput)
+        val passCheck = passwordMatching(passwordInput)
+        passCheck match {
+          case true => {
+          println(s"""
+          logging in user $usernameInput...
+          """)
+          // login functionality
+          usernameInput match {
+            case "admin" => println("opening admin menu...") //admin menu
+            case _ => println("opening user menu...") //user menu
+            }
+          }
+          case false => {
+            println("""
+            wrong password...
+            """)
+            userLoginPassword
+          }
+        }
       }
 
     }
@@ -78,7 +96,7 @@ object UserLogin {
       } else return false
     }
 
-    def passwordMatching(passwordInput: String): Unit = {
+    def passwordMatching(passwordInput: String): Boolean = {
 
       val passwordChecklist = users.flatten
       val userIndex = passwordChecklist.indexOf(usernameInput)
@@ -88,7 +106,8 @@ object UserLogin {
         println("""
         password is correct
         """)
-      }
+        return true
+      } else return false
     }    
   }
 }
