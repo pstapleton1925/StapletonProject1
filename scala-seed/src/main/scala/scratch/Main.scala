@@ -19,10 +19,10 @@ object Main extends App {
   //TwitterDataUtils.getTwitterData
 
   // test HiveConnect
-  HiveConnect.connectHive
+  //HiveConnect.connectHive
 
   // test loginMenu
-  //InterfaceL0.loginMenu
+  InterfaceL0.loginMenu
   
   
 
