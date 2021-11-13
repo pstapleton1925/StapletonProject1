@@ -1,5 +1,6 @@
 package scratch.hiveQueries
 
+/*
 object HiveTableCrEdit {
   def createNew: Unit = {
       val newTableString = {
@@ -8,6 +9,7 @@ object HiveTableCrEdit {
 
   }
 }
+*/
 
 /*
 create table if not exists json_table(
