@@ -2,8 +2,10 @@ package scratch
 
 import scratch.users._
 import scratch.utils._
-import com.github.tototoshi.csv._
 import scratch.hiveQueries._
+
+import sttp.client3._
+import com.github.tototoshi.csv._
 
 import scala.io.StdIn._
 import java.io._
@@ -26,6 +28,6 @@ object Main extends App {
   //test deleteUsers
   //DeleteUser
   
-  
+
 
 }

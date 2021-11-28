@@ -12,6 +12,7 @@ lazy val root = (project in file("."))
     name := "scala-seed",
     libraryDependencies += scalaTest % Test,
     libraryDependencies += "com.github.tototoshi" %% "scala-csv" % "1.3.8",
+    libraryDependencies += "com.softwaremill.sttp.client3" %% "core" % "3.3.17",
     libraryDependencies += lift_json
   )
 
