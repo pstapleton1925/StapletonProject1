@@ -12,18 +12,18 @@ import java.io._
 
 object Main extends App {
 
-  UserInfo.uifStartup
+  //UserInfo.uifStartup
 
-  println(InterfaceL0.welcomeMessage)
+  //println(InterfaceL0.welcomeMessage)
   
   // twitter test
-  //utils.ParseTwitterData
+  utils.TwitterUtils
 
   // test HiveConnect
   //HiveConnect.connectHive
 
   // test loginMenu
-  InterfaceL0.loginMenu
+  //InterfaceL0.loginMenu
 
   //test deleteUsers
   //DeleteUser
