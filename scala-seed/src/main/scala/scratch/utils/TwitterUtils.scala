@@ -8,6 +8,7 @@ import scratch.twitter._
 import com.github.tototoshi.csv._
 
 import sttp.client3._
+import sttp.model._
 import sttp.client3.akkahttp._
 import sttp.client3.json4s._
 
@@ -20,13 +21,30 @@ import java.io._
 object TwitterUtils extends sttp.client3.SttpApi {
 
   val BEARER_TOKEN = keys.BEARER_TOKEN
+  val auth = s"Authorization: Bearer $BEARER_TOKEN"
 
+  val volumeEndpoint: Uri = uri"https://api.twitter.com/2/tweets/sample/stream"
+
+  implicit val serialization = org.json4s.native.Serialization
+  implicit val formats = org.json4s.DefaultFormats
+
+  case class HttpBinResponse(origin: String, headers: Map[String, String])
   
   val volumeRequest = basicRequest
-    .get(uri"https://api.twitter.com/2/tweets/sample/stream")
-    .header(s"Authorization: Bearer $BEARER_TOKEN")
+    .header
+    .get(volumeEndpoint)
+    .response(asJson[HttpBinResponse])
 
-  val backend = HttpURLConnectionBackend()
-  val response: Identity[Response[Either[String, String]]] = volumeRequest.send(backend)
+  val backend: SttpBackend[Future, Any] = AkkaHttpBackend()
+  val response: Future[Response[Either[ResponseException[String, Exception], HttpBinResponse]]] =
+    volumeRequest.send(backend)
+
+  for {
+    r <- response
+  } {
+    println(s"Got response code: ${r.code}")
+    println(r.body)
+    backend.close()
+  }
 
 }
