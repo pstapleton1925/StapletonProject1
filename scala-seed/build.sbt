@@ -8,6 +8,7 @@ ThisBuild / organizationName := "example"
 val AkkaVersion = "2.6.17"
 val AkkaHttpVersion = "10.2.7"
 val sttpVersion = "3.3.17"
+val circeVersion = "0.14.1"
 
 lazy val root = (project in file("."))
   .settings(
@@ -17,10 +18,7 @@ lazy val root = (project in file("."))
     libraryDependencies += "com.typesafe.akka" %% "akka-stream-typed" % AkkaVersion,
     libraryDependencies += "com.typesafe.akka" %% "akka-http" % AkkaHttpVersion,
     libraryDependencies += "com.github.tototoshi" %% "scala-csv" % "1.3.8",
-    libraryDependencies += "com.softwaremill.sttp.client3" %% "core" % sttpVersion,
-    libraryDependencies += "com.softwaremill.sttp.client3" %% "akka-http-backend" % sttpVersion,
-    libraryDependencies += "com.softwaremill.sttp.client3" %% "json4s" % sttpVersion,
-    libraryDependencies += "org.json4s" %% "json4s-native" % "3.6.12"
+    libraryDependencies += "org.apache.httpcomponents" % "httpclient" % "4.5.13",
   )
 
 // See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.

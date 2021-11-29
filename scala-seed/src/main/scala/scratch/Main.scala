@@ -4,7 +4,6 @@ import scratch.users._
 import scratch.utils._
 import scratch.hiveQueries._
 
-import sttp.client3._
 import com.github.tototoshi.csv._
 
 import scala.io.StdIn._
@@ -17,7 +16,7 @@ object Main extends App {
   //println(InterfaceL0.welcomeMessage)
   
   // twitter test
-  utils.TwitterUtils
+  println(utils.TwitterUtils.twitterApi(utils.TwitterUtils.testEndpoint))
 
   // test HiveConnect
   //HiveConnect.connectHive
