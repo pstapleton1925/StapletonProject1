@@ -11,12 +11,19 @@ import java.io._
 
 object Main extends App {
 
+  val twit = utils.TwitterUtils
+  val twitParse = utils.ParseTwitterData
+
   //UserInfo.uifStartup
 
   //println(InterfaceL0.welcomeMessage)
   
   // twitter test
-  println(utils.TwitterUtils.twitterApi(utils.TwitterUtils.testEndpoint))
+  println("")
+  println(twit.twitterApi(twit.testEndpoint))
+  println("")
+  println(twitParse.getTweets(twit.twitterApi(twit.testEndpoint)).toString())
+  println("")
 
   // test HiveConnect
   //HiveConnect.connectHive

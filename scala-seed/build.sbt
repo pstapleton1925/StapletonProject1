@@ -19,6 +19,7 @@ lazy val root = (project in file("."))
     libraryDependencies += "com.typesafe.akka" %% "akka-http" % AkkaHttpVersion,
     libraryDependencies += "com.github.tototoshi" %% "scala-csv" % "1.3.8",
     libraryDependencies += "org.apache.httpcomponents" % "httpclient" % "4.5.13",
+    libraryDependencies += "net.liftweb" %% "lift-json" % "3.5.0"
   )
 
 // See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
