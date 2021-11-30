@@ -12,7 +12,7 @@ import java.io._
 object Main extends App {
 
   val twit = utils.TwitterUtils
-  val twitParse = utils.ParseTwitterData
+  val csvu = utils.CsvUtils
 
   //UserInfo.uifStartup
 
@@ -22,8 +22,11 @@ object Main extends App {
   println("")
   println(twit.twitterApi(twit.testEndpoint))
   println("")
-  println(twitParse.getTweets(twit.twitterApi(twit.testEndpoint)).toString())
+  println(twit.getTweets(twit.twitterApi(twit.testEndpoint)).toString())
   println("")
+  csvu.twitCSV("test", twit.getTweets(twit.twitterApi(twit.testEndpoint)))
+
+  
 
   // test HiveConnect
   //HiveConnect.connectHive

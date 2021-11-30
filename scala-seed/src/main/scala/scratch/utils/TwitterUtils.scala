@@ -23,7 +23,14 @@ import org.apache.http.impl.client.HttpClientBuilder
 import org.apache.http.client.config.RequestConfig
 import org.apache.http.client.config.CookieSpecs
 
+import net.liftweb.json.DefaultFormats
+import net.liftweb.json._
+
 object TwitterUtils {
+
+  case class TwitterObject(id: String, text: String)
+
+  case class TwitterData(data: Array[TwitterObject])
 
   val testEndpoint = "https://api.twitter.com/2/tweets?ids=1465421999983976456";
   val volumeEndpoint = "https://api.twitter.com/2/tweets/sample/stream";
@@ -55,11 +62,23 @@ object TwitterUtils {
 
     httpClient.close()
     return content
-
   }
 
-  def saveTDasCSV: Unit = {
-    
+  implicit val formats = DefaultFormats
+
+  def getTweets(dataString: String): List[List[String]] = {
+    val json = parse(dataString)
+    val tweetsRaw = (json \\ "data").children
+    val tweetsExtracted = tweetsRaw.map(_.extract[TwitterObject]) 
+    val tweetsListList = tweetsExtracted.map(twitObjToList(_))
+    return tweetsListList
+  }
+
+  def twitObjToList(tweet: TwitterObject): List[String] = {
+    val id = tweet.id
+    val text = tweet.text
+    val tList = List(id, text)
+    return tList
   }
 
 }
