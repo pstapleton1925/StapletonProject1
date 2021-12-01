@@ -22,9 +22,9 @@ object Main extends App {
   println("")
   println(twit.twitterApi(twit.testEndpoint))
   println("")
-  println(twit.getTweets(twit.twitterApi(twit.testEndpoint)).toString())
+  println(twit.getTweets(twit.twitterApi(twit.testEndpoint)).mkString("/n"))
   println("")
-  csvu.twitCSV("test", twit.getTweets(twit.twitterApi(twit.testEndpoint)))
+  //csvu.twitCSV("test", twit.getTweets(twit.twitterApi(twit.testEndpoint)))
 
   
 
