@@ -28,17 +28,23 @@ import net.liftweb.json._
 
 object TwitterUtils {
 
-  case class TwitterObject(id: String, text: String)
+  case class TweetData(id: String, text: String)
 
-  case class TwitterData(data: Array[TwitterObject])
+  case class TwitterData(data: Array[TweetData])
 
-  val testEndpoint = "https://api.twitter.com/2/tweets?ids=1465421999983976456";
-  val volumeEndpoint = "https://api.twitter.com/2/tweets/sample/stream";
-  val searchAcnhEndpoint = """
-    https://api.twitter.com/2/tweets/search/recent?max_results=100&query="animal crossing" OR "animal crossing:" OR "acnh" OR %23acnh OR %23animalcrossing
-    """
-    .stripMargin;
-    
+  case class MetaData(newest_id: String, oldest_id: String, result_count: Int, next_token: String)
+
+  case class TwitterMeta(meta: List[MetaData])
+
+  var next_token = ""
+
+  implicit val formats = DefaultFormats
+
+  val testEndpoint = "https://api.twitter.com/2/tweets?ids=1465421999983976456"
+  val volumeEndpoint = "https://api.twitter.com/2/tweets/sample/stream"
+  val searchAcnhEndpoint = "https://api.twitter.com/2/tweets/search/recent?max_results=100&query=%22animal%20crossing%22%20OR%20%22animal%20crossing:%22%20OR%20%22acnh%22%20OR%20%23acnh%20OR%20%23animalcrossing"
+  val searchAcnhEndpointWithNext = s"https://api.twitter.com/2/tweets/search/recent?max_results=100&next_token=${next_token}&query=%22animal%20crossing%22%20OR%20%22animal%20crossing:%22%20OR%20%22acnh%22%20OR%20%23acnh%20OR%20%23animalcrossing"
+
   def twitterApi(url: String): String = {
 
     val httpClient = HttpClientBuilder.create()
@@ -64,21 +70,27 @@ object TwitterUtils {
     return content
   }
 
-  implicit val formats = DefaultFormats
-
   def getTweets(dataString: String): List[List[String]] = {
     val json = parse(dataString)
     val tweetsRaw = (json \\ "data").children
-    val tweetsExtracted = tweetsRaw.map(_.extract[TwitterObject]) 
+    val tweetsExtracted = tweetsRaw.map(_.extract[TweetData]) 
     val tweetsListList = tweetsExtracted.map(twitObjToList(_))
     return tweetsListList
   }
 
-  def twitObjToList(tweet: TwitterObject): List[String] = {
+  def twitObjToList(tweet: TweetData): List[String] = {
     val id = tweet.id
     val text = tweet.text
     val tList = List(id, text)
     return tList
+  }
+
+  def getNextToken(metaString: String): String = {
+    val json = parse(metaString)
+    val metaRaw = (json \\ "meta").children
+    val metaExtrList = metaRaw.map(_.extract[MetaData])
+    val metaExtracted = metaExtrList(0)
+    return metaExtracted.next_token
   }
 
 }
