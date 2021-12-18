@@ -18,15 +18,15 @@ object Main extends App {
 
   //println(InterfaceL0.welcomeMessage)
   
-  // twitter test
+  /* twitter test
   println("")
   // println(twit.twitterApi(twit.testEndpoint))
   // twit.twitterApi(twit.searchAcnhEndpoint).split(",").foreach(println)
   println(twit.getNextToken(twit.twitterApi(twit.searchAcnhEndpoint)))
   println("")
-  // println(twit.getTweets(twit.twitterApi(twit.testEndpoint)).toString())
+  println(twit.getTweets(twit.twitterApi(twit.testEndpoint)).mkString("/n"))
   println("")
-//  csvu.twitCSV("test", twit.getTweets(twit.twitterApi(twit.testEndpoint)))
+  //csvu.twitCSV("test", twit.getTweets(twit.twitterApi(twit.testEndpoint))) */
 
   
 
